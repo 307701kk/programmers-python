@@ -1,19 +1,11 @@
 def solution(wallpaper):
-    answer = []
-    file = []
-    for x,col in enumerate(wallpaper):
-        for y,i in enumerate(col):
-            if i =='#':
-                file.append((x,y))
-    smallx,smally = file[0]
-    maxx,maxy = file[0]
-    for lux,luy in file:
-        if lux < smallx:
-            smallx = lux
-        elif lux>maxx:
-            maxx = lux
-        if luy < smally:
-            smally = luy
-        elif luy>maxy:
-            maxy = luy
-    return [smallx,smally,maxx+1,maxy+1]
+    x = []
+    y = []
+    
+    for i, row in enumerate(wallpaper):
+        for j, col in enumerate(row):
+            if col == '#':
+                x.append(i)
+                y.append(j)
+                
+    return [min(x), min(y), max(x) + 1, max(y) + 1]
