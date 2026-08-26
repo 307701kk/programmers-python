@@ -8,6 +8,7 @@ def solution(new_id):
     for i in new1:
         if i.isalnum() or i=='-' or i == '_' or i =='.':
             new2.append(i)
+            
     new1= []
     for i,text in enumerate(new2):
         if text == '.': 
@@ -18,6 +19,7 @@ def solution(new_id):
     if len(new1)>0:
         if new1[0] == '.':
             del new1[0]
+            
     if len(new1)>0:        
         if new1[-1] == '.':
             new1.pop()
