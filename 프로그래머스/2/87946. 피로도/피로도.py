@@ -1,21 +1,19 @@
+from itertools import permutations
+
 def solution(k, dungeons):
-    answer,count = 0,0
-    check = [0]*len(dungeons)
+    answer = 0
     
-    def travel(k,count):
-        nonlocal answer
-        answer = max(answer,count)
+    for p in permutations(dungeons, len(dungeons)):
+        hp = k
+        count = 0
         
-        for i,dungeon in enumerate(dungeons):
-            cut,hp = dungeon
-            if check[i] == 0:
-                if k>=cut:
-                    check[i] = 1
-                    travel(k- hp,count+1)
-                    check[i] = 0  
-    
-    travel(k,answer) 
+        for cut, use in p:
+            if hp >= cut:
+                hp -= use
+                count += 1
+            else:
+                break
+                
+        answer = max(answer, count)
+        
     return answer
-
-
-    
